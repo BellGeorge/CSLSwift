@@ -1,0 +1,207 @@
+//
+//  CSLReaderConstants.swift
+//  IntelliView
+//
+//  Created by Jeff Craighead on 11/29/17.
+//  Copyright © 2017 Silent Partner Technologies. All rights reserved.
+//
+
+import Foundation
+
+let TIMER_READ: Int = 1; //ms
+
+let SILAB_IMAGE_SIZE: Int = 16384;
+let SILAB_IMAGE_TOTAL_SUBPART: Int = 144; //size/114+1
+let SILAB_BOOTLOADER_SIZE: Int = 9216;
+let SILAB_BOOTLOADER_TOTAL_SUBPART: Int = 81; //size/114+1
+
+let BT_IMAGE_SIZE: Int = 124928;
+let BT_IMAGE_TOTAL_SUBPART: Int = 1952; //size/64
+let BT_BOOTLOADER_SIZE: Int = 4096;
+let BT_BOOTLOADER_TOTAL_SUBPART: Int = 64; //size/64
+
+let RFID_IMAGE_SIZE: Int = 203776;
+let RFID_IMAGE_TOTAL_SUBPART: Int = 6368; //size/32
+let RFID_BOOTLOADER_SIZE: Int = 24576;
+let RFID_BOOTLOADER_TOTAL_SUBPART: Int = 768; //size/32
+
+let PREFIX: UInt8 = 0xA7;
+let RESERVE: UInt8 = 0x82;
+
+enum CslCommandType: UInt8 {
+    case rfid = 0xC2
+    case barcode = 0x6A
+    case notify = 0xD9
+    case silab = 0xE8
+    case bluetooth = 0x5F
+}
+
+enum CslConnectionType: UInt8 {
+    case bluetooth = 0xB3
+    case usb = 0xE6
+}
+
+enum CslLinkDirection: UInt8 {
+    case up = 0x9E
+    case down = 0x37
+}
+
+
+let REG_REQ: UInt8 = 0x70 //Firmware Register Access Packet Header
+let HST_CMD: UInt16 = 0xF000 //Host Command Address
+
+//RFID Firmware Register Addresses as arrays
+let FIRMWARE_VER: UInt16 = 0x0000
+let IMPINJ_EXTENSIONS: UInt16 = 0x0203
+let PROTSCH_SMIDX: UInt16 = 0x0300 // FCC or ETSI
+let PROTSCH_SMCFG: UInt16 = 0x0301 // Protocol state machine configuration
+let PROTSCH_SMCFG_SEL: UInt16 = 0x0304 // Used to select the desired bank for the PROTSCH_SMCFG register
+let ANT_CYCLES: UInt16 = 0x0700
+let ANT_PORT_SEL: UInt16 = 0x0701
+let ANT_PORT_CFG: UInt16 = 0x0702
+let ANT_PORT_DWELL: UInt16 = 0x0705
+let ANT_PORT_POWER: UInt16 = 0x0706
+let ANT_PORT_INV_CNT: UInt16 = 0x0707
+let TAGMSK_DESC_SEL: UInt16 = 0x0800
+let TAGMSK_DESC_CFG: UInt16 = 0x0801
+let TAGMSK_BANK: UInt16 = 0x0802
+let TAGMSK_PTR: UInt16 = 0x0803
+let TAGMSK_LEN: UInt16 = 0x0804
+let TAGMSK_0_3: UInt16 = 0x0805
+let TAGMSK_4_7: UInt16 = 0x0806
+let TAGMSK_8_11: UInt16 = 0x0807
+let TAGMSK_12_15: UInt16 = 0x0808
+let TAGMSK_16_19: UInt16 = 0x0809
+let TAGMSK_20_23: UInt16 = 0x080A
+let TAGMSK_24_27: UInt16 = 0x080B
+let TAGMSK_28_31: UInt16 = 0x080C
+let QUERY_CFG: UInt16 = 0x0900
+let INV_CFG: UInt16 = 0x0901
+let INV_SEL: UInt16 = 0x0902
+
+let INV_ALG_PARM_0: UInt16 = 0x0903 // Q Values
+let INV_ALG_PARM_1: UInt16 = 0x0904 // Retries - default 0
+let INV_ALG_PARM_2: UInt16 = 0x0905 // Controls target flipping behavior
+let INV_ALG_PARM_3: UInt16 = 0x0906 // Controls target flipping behavior
+
+let TAGACC_DESC_CFG: UInt16 = 0x0A01
+let TAGACC_BANK: UInt16 = 0x0A02
+let TAGACC_PTR: UInt16 = 0x0A03
+let TAGACC_CNT: UInt16 = 0x0A04
+let TAGACC_LOCKCFG: UInt16 = 0x0A05
+let TAGACC_ACCPWD: UInt16 = 0x0A06
+let TAGACC_KILLPWD: UInt16 = 0x0A07
+let TAGWRDAT_SEL: UInt16 = 0x0A08
+let TAGWRDAT_0: UInt16 = 0x0A09
+let TAGWRDAT_1: UInt16 = 0x0A0A
+let TAGWRDAT_2: UInt16 = 0x0A0B
+let TAGWRDAT_3: UInt16 = 0x0A0C
+let TAGWRDAT_4: UInt16 = 0x0A0D
+let TAGWRDAT_5: UInt16 = 0x0A0E
+let TAGWRDAT_6: UInt16 = 0x0A0F
+let TAGWRDAT_7: UInt16 = 0x0A10
+let CURRENT_PROFILE: UInt16 = 0x0B60
+let FREQCH_SEL: UInt16 = 0x0C01
+let FREQCH_CFG: UInt16 = 0x0C02
+let FREQCH_DESC_PLLDIVMULT: UInt16 = 0x0C03
+let AUTHENTICATE_CFG: UInt16 = 0x0F00
+let AUTHENTICATE_MSG0: UInt16 = 0x0F01
+let AUTHENTICATE_MSG1: UInt16 = 0x0F02
+let AUTHENTICATE_MSG2: UInt16 = 0x0F03
+let AUTHENTICATE_MSG3: UInt16 = 0x0F04
+let READBUFFER_PTR: UInt16 = 0x0A03
+let READBUFFER_LEN: UInt16 = 0x0A04
+let UNTRACEABLE_CFG: UInt16 = 0x0F05
+let OEM_ADDR: UInt16 = 0x0500
+let OEM_DATA: UInt16 = 0x0501
+
+//TAGMSK_DESC_CFG Values
+let TAGMSK_DISABLE: UInt32 = 0x00
+let TAGMSK_ENABLE: UInt32 = 0x01
+let TAGMSK_TARGET_S0: UInt32 = 0x00
+let TAGMSK_TARGET_S1: UInt32 = 0x02
+let TAGMSK_TARGET_S2: UInt32 = 0x04
+let TAGMSK_TARGET_S3: UInt32 = 0x06
+let TAGMSK_TARGET_SL: UInt32 = 0x08
+
+//TAGMSK_BANK and TAGACC_BANK Values
+let MEMORY_BANK_RESERVED: UInt32 = 0x00
+let MEMORY_BANK_EPC: UInt32 = 0x01
+let MEMORY_BANK_TID: UInt32 = 0x02
+let MEMORY_BANK_USER: UInt32 = 0x03
+
+
+//OEM Table Addresses
+let ANTENNA_SEQ_1: UInt16 = 0x000000A7
+let ANTENNA_SEQ_2: UInt16 = 0x000000A8
+let ANTENNA_SEQ_3: UInt16 = 0x000000A9
+let ANTENNA_SEQ_4: UInt16 = 0x000000AA
+let ANTENNA_SEQ_5: UInt16 = 0x000000AB
+let ANTENNA_SEQ_6: UInt16 = 0x000000AC
+
+//Inventory Algorithms
+let FIXED_Q: UInt32 = 0x00
+let DYNAMIC_Q: UInt32 = 0x01
+let DYNAMIC_Q_ADJUSTMENT: UInt32 = 0x02
+let DYNAMIC_Q_THRESHOLD: UInt32 = 0x03
+
+//Link Profiles
+let PROFILE_BEST_MULTIPATH: UInt32 = 0
+let PROFILE_LONGEST_RANGE: UInt32 = 1
+let PROFILE_BALANCED: UInt32 = 2
+let PROFILE_MAX_THROUGHPUT: UInt32 = 3
+let PROFILE_UNKNOWN: UInt32 = 0xffff
+
+//TAG READ SETTINGS FOR INV_CFG
+let TAG_READ_NO_BANKS: UInt8 = 0
+let TAG_READ_1_BANKS: UInt8 = 1
+let TAG_READ_2_BANKS: UInt8 = 2
+
+//Select State
+let SELECT_ALL: UInt32 = 0x0
+let SELECT_DEASSERTED: UInt32 = 0x2
+let SELECT_ASSERTED: UInt32 = 0x3
+
+//Host Command Values
+let WRITE_OEM_TABLE: UInt32 = 0x00000002
+let READ_OEM_TABLE: UInt32 = 0x00000003
+let START_INVENTORY: UInt32 = 0x0000000F
+let READ: UInt32 = 0x00000010
+let WRITE: UInt32 = 0x00000011
+let LOCK: UInt32 = 0x00000012
+let KILL: UInt32 = 0x00000013
+let CHANGE_LINK_PROFILE: UInt32 = 0x00000019
+let BLOCK_WRITE: UInt32 = 0x0000001F
+let AUTHENTICATE: UInt32 = 0x00000050
+let READ_BUFFER: UInt32 = 0x00000051
+let UNTRACABLE: UInt32 = 0x00000052
+
+//Notification Command Payloads
+let BATTERY_VOLTAGE:UInt16 = 0xA000
+let TRIGGER_STATE:UInt16 = 0xA001
+let START_BATTERY_AUTOREPORT:UInt16 = 0xA002
+let STOP_BATTERY_AUTOREPORT:UInt16 = 0xA003
+
+// Barcode Module Command Payloads
+let BARCODE_POWER_ON: UInt16 = 0x9000
+let BARCODE_POWER_OFF: UInt16 = 0x9001
+let BARCODE_TRIGGER_SCAN: UInt16 = 0x9002
+let BARCODE_RAW_DATA: UInt16 = 0x9003
+let BARCODE_CMD_TRIGGER_MODE: UInt16 = 0x1B31
+let BARCODE_CMD_STOP_CONTINUE_MODE: UInt16 = 0x1B30
+let BARCODE_CMD_START_CONTINUE_MODE: UInt16 = 0x1B33
+let BARCODE_CMD_SYS_MODE_ENTER: [UInt8] = [ 0x6e, 0x6c, 0x73, 0x30, 0x30, 0x30, 0x36, 0x30, 0x31, 0x30, 0x3b ]
+let BARCODE_CMD_PERM_CONTINUE_MODE: [UInt8] = [ 0x6e, 0x6c, 0x73, 0x30, 0x33, 0x30, 0x32, 0x30, 0x32, 0x30, 0x3b ]
+let BARCODE_CMD_PERM_TRIGGER_MODE: [UInt8] = [ 0x6e, 0x6c, 0x73, 0x30, 0x33, 0x30, 0x32, 0x30, 0x30, 0x30, 0x3b ]
+let BARCODE_CMD_SCAN_CYCLE_TIME_3000: [UInt8] = [ 0x6e, 0x6c, 0x73, 0x30, 0x33, 0x31, 0x33, 0x30, 0x30, 0x30, 0x3d, 0x33, 0x30, 0x30, 0x30, 0x30, 0x3b ]
+let BARCODE_CMD_SYS_MODE_EXIT: [UInt8] = [ 0x6e, 0x6c, 0x73, 0x30, 0x30, 0x30, 0x36, 0x30, 0x30, 0x30, 0x3b ]
+
+
+//RFID Module Command Payloads
+let RFID_POWER_ON: UInt16 = 0x8000
+let RFID_POWER_OFF: UInt16 = 0x8001
+let RFID_COMMAND: UInt16 = 0x8002
+let RFID_DATA_READ: UInt16 = 0x8003
+
+//Tag Delay
+let TAG_DELAY: UInt8 = 30 // 10 ms delay, use in the INV_CFG (inventory config) command
